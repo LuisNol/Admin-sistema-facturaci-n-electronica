@@ -61,6 +61,18 @@
                 >
               </b-col>
             </div>
+             <b-alert
+              :model-value="error.length > 0"
+              variant="danger"
+              class="shadow-sm border-theme-white-2 my-0 mt-2"
+            >
+              <div
+                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-danger rounded-circle mx-auto me-1"
+              >
+                <i class="fas fa-xmark align-self-center mb-0 text-white"></i>
+              </div>
+              {{ " " }} <strong>Credenciales Incorrectas</strong> 
+            </b-alert>
 
             <b-form-group class="mb-0 row">
               <b-col cols="12">
@@ -76,7 +88,7 @@
             <p class="text-muted">
               Don't have an account ?
               <router-link to="/auth/register" class="text-primary ms-2">
-                Free Resister
+                Free Register
               </router-link>
             </p>
             <h6 class="px-3 d-inline-block">Or Login With</h6>
@@ -123,7 +135,7 @@ import type { ResponseAuthLogin } from "@/types/auth";
 import router from "@/router";
 
 const credentials = reactive({
-  email: "jaico3456789@gmail.com",
+  email: "nolberto.sumaran@gmail.com",
   password: "12345678",
 });
 

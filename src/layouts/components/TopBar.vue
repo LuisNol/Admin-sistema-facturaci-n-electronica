@@ -381,9 +381,9 @@
                 <div class="flex-shrink-0">
                   <img :src="avatar1" alt="" class="thumb-md rounded-circle" />
                 </div>
-                <div class="flex-grow-1 ms-2 text-truncate align-self-center">
-                  <h6 class="my-0 fw-medium text-dark fs-13">William Martin</h6>
-                  <small class="text-muted mb-0">Front End Developer</small>
+                <div class="flex-grow-1 ms-2 text-truncate align-self-center" v-if="user">
+                  <h6 class="my-0 fw-medium text-dark fs-13">{{ user.full_name }}</h6>
+                  <small class="text-muted mb-0">{{ user.email }}</small>
                 </div>
               </div>
               <div class="dropdown-divider mt-0"></div>
@@ -435,6 +435,7 @@ import DropDown from "@/components/DropDown.vue";
 import { useLayoutStore } from "@/stores/layout";
 
 import { useAuthStore } from "@/stores/auth";
+import type { User } from "@/types/auth";
 
 const show = ref("all-tab");
 const useLayout = useLayoutStore();
@@ -469,7 +470,7 @@ const resize = () => {
 };
 
 const useAuth = useAuthStore();
-
+const user = ref<User>(null);
 const removeSession = () => {
   // user.value = null;
   localStorage.removeItem("token");
@@ -526,5 +527,7 @@ onMounted(() => {
     resize();
   });
   leftSideBarClick();
+  // console.log(useAuth.user);
+  user.value = useAuth.user;
 });
 </script>
