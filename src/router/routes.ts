@@ -15,6 +15,16 @@ const authRoutes = [
     component: () => import("@/views/auth/login.vue"),
   },
   // {
+  //   path: "/products",
+  //   name: "products",
+  //   meta: {
+  //     title: setTitle("Productos"),
+  //     authRequired: true,
+  //     permission: 'all',
+  //   },
+  //   component: () => import("@/views/products.vue"),
+  // },
+  // {
     //   path: "/auth/register",
     //   name: "auth.register",
     //   meta: {
@@ -94,10 +104,157 @@ const dashboardRoutes = [
   },
 ];
 
+const accessRoutes = [
+  {
+    path: "/roles",
+    name: "roles.index",
+    meta: {
+      title: setTitle("Roles"),
+      authRequired: true,
+      permission: 'list_role',
+    },
+    component: () => import("@/views/role/index.vue"),
+  },
+   {
+    path: "/users",
+    name: "users.index",
+    meta: {
+      title: setTitle("Usuarios"),
+      authRequired: true,
+      permission: 'list_user',
+    },
+    component: () => import("@/views/user/index.vue"),
+  },
+  {
+    path: "/configuration",
+    name: "configuration.index",
+    meta: {
+      title: setTitle("Configuracion"),
+      authRequired: true,
+      permission: 'all',
+    },
+    component: () => import("@/views/configuration/index.vue"),
+  },
+];
+
+const comercialRoutes = [
+  {
+    path: "/categories",
+    name: "categories.index",
+    meta: {
+      title: setTitle("Categorias"),
+      authRequired: true,
+      permission: 'list_categorie',
+    },
+    component: () => import("@/views/categorie/index.vue"),
+  },
+  {
+    path: "/product/register",
+    name: "products.store",
+    meta: {
+      title: setTitle("Registrar Producto"),
+      authRequired: true,
+      permission: 'register_product',
+    },
+    component: () => import("@/views/product/register.vue"),
+  },
+  {
+    path: "/product/list",
+    name: "products.index",
+    meta: {
+      title: setTitle("Listado Producto"),
+      authRequired: true,
+      permission: 'list_product',
+    },
+    component: () => import("@/views/product/index.vue"),
+  },
+  {
+    path: "/product/edit/:id",
+    name: "products.edit",
+    meta: {
+      title: setTitle("Editar Producto"),
+      authRequired: true,
+      permission: 'edit_product',
+    },
+    component: () => import("@/views/product/edit.vue"),
+  },
+  {
+    path: "/clients",
+    name: "clients.index",
+    meta: {
+      title: setTitle("Clientes"),
+      authRequired: true,
+      permission: 'list_client',
+    },
+    component: () => import("@/views/clients/index.vue"),
+  },
+  {
+    path: "/sale/register",
+    name: "sales.store",
+    meta: {
+      title: setTitle("Registrar Venta"),
+      authRequired: true,
+      permission: 'register_sale',
+    },
+    component: () => import("@/views/sales/register.vue"),
+  },
+  {
+    path: "/sale/list",
+    name: "sales.index",
+    meta: {
+      title: setTitle("Listado Ventas"),
+      authRequired: true,
+      permission: 'list_sale',
+    },
+    component: () => import("@/views/sales/index.vue"),
+  },
+  {
+    path: "/sale/edit/:id",
+    name: "sales.edit",
+    meta: {
+      title: setTitle("Editar Ventas"),
+      authRequired: true,
+      permission: 'edit_sale',
+    },
+    component: () => import("@/views/sales/edit.vue"),
+  },
+  {
+    path: "/nota-debito-credito/:id",
+    name: "nota.electronica",
+    meta: {
+      title: setTitle("Nota Debito/Credito"),
+      authRequired: true,
+      permission: 'nota_electronica',
+    },
+    component: () => import("@/views/sales/nota.vue"),
+  },
+  {
+    path: "/guia/register",
+    name: "guia.store",
+    meta: {
+      title: setTitle("Registrar Guia"),
+      authRequired: true,
+      permission: 'register_guia_remision',
+    },
+    component: () => import("@/views/guia/register.vue"),
+  },
+  {
+    path: "/guia/list",
+    name: "guias.index",
+    meta: {
+      title: setTitle("Guias de Remisión"),
+      authRequired: true,
+      permission: 'list_guia_remision',
+    },
+    component: () => import("@/views/guia/index.vue"),
+  },
+];
 
 
 export const allRoute = [
   ...authRoutes,
   ...errorRoutes,
   ...dashboardRoutes,
+  ...accessRoutes,
+  ...comercialRoutes
 ];

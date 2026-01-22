@@ -44,9 +44,9 @@
     "simplebar": "^6.2.6",
     "simplebar-vue": "^2.3.4",
     "starability": "^2.4.0",
-    "sweetalert2": "^11.12.0",
+    "sweetalert2": "^11.22.0",
     "tobii": "^2.0.0-alpha",
-    "uppy": "^3.27.1",
+    "uppy": "^4.16.0",
     "vue": "^3.4.29",
     "vue-cropperjs": "^5.0.0",
     "vue-draggable-next": "^2.2.1",
@@ -72,7 +72,10 @@
     "sass": "^1.77.6",
     "typescript": "^5.5.3",
     "unplugin-vue-components": "^0.27.2",
-    "vite": "^5.3.1",
+    "vite": "^6.3.5",
     "vue-tsc": "^2.0.26"
+  },
+  "overrides": {
+    "quill": "2.0.3"
   }
 }

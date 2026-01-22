@@ -1,0 +1,436 @@
+<template>
+    <DefaultLayout>
+        <b-row class="justify-content-center">
+            <b-col cols="12">
+                <b-card>
+                    <b-card-header>
+                        <b-card-title>🛍️ REGISTRAR PRODUCTO</b-card-title>
+                    </b-card-header>
+                    <b-card-body class="pt-0">
+                        <b-row>
+                            <b-col lg="5" md="5">
+                                <label for="name-product" class="col-form-label text-lg-end">Nombre del Producto: </label>
+                                <b-form-input
+                                    type="text"
+                                    id="name-product"
+                                    v-model="title"
+                                    placeholder="Example: Pollos"
+                                />
+                            </b-col>
+                            <b-col lg="4" md="4">
+                                <label for="sku-product" class="col-form-label text-lg-end">Sku: </label>
+                                <b-form-input
+                                    type="text"
+                                    id="sku-product"
+                                    v-model="sku"
+                                    placeholder="Example: FE4RFF"
+                                />
+                            </b-col>
+                            <b-col lg="3" md="3">
+                                <label for="categorie-product" class="col-form-label text-lg-end">Categoria: </label>
+                                <b-form-select id="type_category_list" v-model="categorie_id">
+                                    <option value="">Selec. Categoria</option>
+                                    <template v-for="(categorie, index) in categories" :key="index">
+                                        <option :value="categorie.id">{{ categorie.title }}</option>
+                                    </template>
+                                </b-form-select>
+                            </b-col>
+                        </b-row>
+                        <b-row>
+                            <b-col lg="3" md="3">
+                                <label for="price-final-product" class="col-form-label text-lg-end">Precio Cliente Final: </label>
+                                <b-form-input
+                                    type="number"
+                                    v-model="price_general"
+                                    id="price-final-product"
+                                    placeholder="Example: 150"
+                                />
+                            </b-col>
+                            <b-col lg="3" md="3">
+                                <label for="price-empresa-product" class="col-form-label text-lg-end">Precio Cliente Empresa: </label>
+                                <b-form-input
+                                    type="number"
+                                    v-model="price_company"
+                                    id="price-empresa-product"
+                                    placeholder="Example: 250"
+                                />
+                            </b-col>
+                            <b-col lg="5" md="5">
+                                <label for="description-product" class="col-form-label text-lg-end">Descripción: </label>
+                                <b-form-textarea type="textarea" v-model="description" rows="5" id="description-product" />
+                            </b-col>
+                        </b-row>
+                        <b-row>
+                            <b-col lg="3" md="3">
+                                <label for="is-discount-product" class="col-form-label text-lg-end">Descuento: </label>
+                                <div class="d-flex">
+                                    <b-form-radio name="is_discount" @click="is_discount = 1" value="1" :checked="is_discount == 1" >No</b-form-radio>
+                                    {{ " " }}
+                                    <b-form-radio name="is_discount" @click="is_discount = 2" value="2" :checked="is_discount == 2" class="mx-1">Si</b-form-radio>
+                                </div>
+                            </b-col>
+                            <b-col lg="3" md="3" v-if="is_discount == 2">
+                                <label for="discount-amount-product" class="col-form-label text-lg-end">Porcentaje: </label>
+                                <b-form-input
+                                    type="number"
+                                    v-model="max_discount"
+                                    id="discount-amount-product"
+                                    placeholder="Example: 60%"
+                                />
+                            </b-col>
+
+                            <b-col lg="3" md="3">
+                                <label for="disponiblidad-product" class="col-form-label text-lg-end">Disponiblidad: </label>
+                                <b-form-radio name="disponiblidad" @click="disponiblidad = 1" value="1" :checked="disponiblidad == 1">Vender los productos sin stock</b-form-radio>
+                                <b-form-radio name="disponiblidad" @click="disponiblidad = 2" value="2" :checked="disponiblidad == 2">No vender los productos sin stock</b-form-radio>
+                            </b-col>
+
+                            <b-col lg="3" md="3">
+                                <label for="is_icbper-product" class="col-form-label text-lg-end">Bolsa de Plastico: </label>
+                                <b-form-radio name="is_icbper" @click="is_icbper = 1" value="1" :checked="is_icbper == 1">No</b-form-radio>
+                                <b-form-radio name="is_icbper" @click="is_icbper = 2" value="2" :checked="is_icbper == 2">Si</b-form-radio>
+                            </b-col>
+
+                            <b-col lg="3" md="3">
+                                <label for="is_ivap-product" class="col-form-label text-lg-end">Arroz Pilado: </label>
+                                <b-form-radio name="is_ivap" @click="is_ivap = 1" value="1" :checked="is_ivap == 1">No</b-form-radio>
+                                <b-form-radio name="is_ivap" @click="is_ivap = 2" value="2" :checked="is_ivap == 2">Si</b-form-radio>
+                            </b-col>
+                            <b-col lg="2" md="3">
+                                <label for="is_isc-product" class="col-form-label text-lg-end">ISC: </label>
+                                <div class="d-flex">
+                                    <b-form-radio name="is_isc" @click="is_isc = 1" value="1" :checked="is_isc == 1">No</b-form-radio>
+                                    <b-form-radio name="is_isc" @click="is_isc = 2" class="mx-1" value="2" :checked="is_isc == 2">Si</b-form-radio>
+                                </div>
+                            </b-col>
+                            <b-col lg="2" md="3" v-if="is_isc == 2">
+                                <label for="isc-amount-product" class="col-form-label text-lg-end">Porcentaje: </label>
+                                <b-form-input
+                                    type="number"
+                                    v-model="percentage_isc"
+                                    id="isc-amount-product"
+                                    placeholder="Example: 60%"
+                                />
+                            </b-col>
+                            <b-col lg="2" md="3">
+                                <label for="is_especial_nota-product" class="col-form-label text-lg-end">¿Para Nota Electronica?: </label>
+                                <div class="d-flex">
+                                    <b-form-radio name="is_especial_nota" @click="is_especial_nota = 1" value="1" :checked="is_especial_nota == 1">No</b-form-radio>
+                                    <b-form-radio name="is_especial_nota" @click="is_especial_nota = 2" class="mx-1" value="2" :checked="is_especial_nota == 2">Si</b-form-radio>
+                                </div>
+                            </b-col>
+                            <b-col lg="1" md="1">
+                                <label for="include_igv-product" class="col-form-label text-lg-end">Incluye IGV: </label>
+                                <b-form-radio name="include_igv" @click="include_igv = 1" value="1" :checked="include_igv == 1">No</b-form-radio>
+                                <b-form-radio name="include_igv" @click="include_igv = 2" value="2" :checked="include_igv == 2">Si</b-form-radio>
+                            </b-col>
+                            <b-col lg="2" md="2">
+                                <label for="price_base_igv" class="col-form-label text-lg-end">Precio Base C.F: </label>
+                                <br>
+                                S/. <span>{{ getPriceBaseCF() }}</span>
+                                <br>
+                                <label for="price_base_igv" class="col-form-label text-lg-end">Precio Base C.E: </label>
+                                <br>
+                                S/. <span>{{ getPriceBaseCE() }}</span>
+                            </b-col>
+                        </b-row>
+                        <b-row>
+                            <b-col lg="3" md="3">
+                                <label for="units-product" class="col-form-label text-lg-end">Unidades: </label>
+                                <b-form-select id="type_units_list" v-model="unidad_medida">
+                                    <option value="">Selec. Unidad</option>
+                                    <template v-for="(unit, index) in units" :key="index">
+                                        <option :value="unit.code">{{ unit.name }}</option>
+                                    </template>
+                                </b-form-select>
+                            </b-col>
+                            <b-col lg="3" md="3">
+                                <label for="stock-product" class="col-form-label text-lg-end">Stock: </label>
+                                <b-form-input
+                                    type="number"
+                                    id="stock-product"
+                                    v-model="stock"
+                                    placeholder="Example: 5"
+                                />
+                            </b-col>
+                            <b-col lg="5">
+                                <label for="imagen-product" class="col-form-label text-lg-end">Imagen: </label>
+                                <b-input-group class="mb-3">
+                                    <b-form-file @change="loadFile($event)"  />
+                                    <b-input-group-text>Upload</b-input-group-text>
+                                </b-input-group>
+
+                                <img v-if="IMAGEN_PREVIZUALIZA" :src="IMAGEN_PREVIZUALIZA" alt="" width="150px" class="rounded d-block mx-auto" />
+                            </b-col>
+
+
+                            <b-col lg="12" class="mt-3">
+                                <div class="modal-footer">
+                                    <b-button type="button" variant="primary" @click="store">
+                                    Guardar
+                                    </b-button>
+                                </div>
+                            </b-col>
+                        </b-row>
+                    </b-card-body>
+                </b-card>
+            </b-col>
+        </b-row>
+    </DefaultLayout>
+</template>
+<script setup lang="ts">
+import DefaultLayout from "@/layouts/DefaultLayout.vue";
+import type { AxiosResponse } from "axios";
+import { onMounted, ref, watch } from "vue";
+import HttpClient from "@/helpers/http-client";
+
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import type { RoleUser, User, UserResponse, Users } from "@/types/users";
+import { UNITS, type ProductCategorie, type ProductConfigResponse, type ProductResponse } from "@/types/products";
+type TVueSwalInstance = typeof Swal & typeof Swal.fire;
+
+const title = ref<string>("");
+const sku = ref<string>("");
+const categorie_id = ref<string>("");
+const categories = ref<ProductCategorie[]>([]);
+const price_general = ref<number>(0);
+const price_company  = ref<number>(0);
+const description = ref<string>("");
+const is_discount = ref<number>(1);
+const max_discount = ref<number>(0);
+const disponiblidad = ref<number>(1);
+const is_icbper = ref<number>(1);
+const is_ivap = ref<number>(1);
+const is_isc = ref<number>(1);
+const percentage_isc = ref<number>(0);
+const is_especial_nota = ref<number>(1);
+const include_igv = ref<number>(1);
+const unidad_medida = ref<string>("");
+const stock = ref<number>(0);
+
+const IMAGEN_PREVIZUALIZA = ref<string | ArrayBuffer | null>("");
+const FILE_IMAGEN = ref<File | null>(null);
+
+const units = ref(UNITS);
+
+const config = async () => {
+    try {
+        const res: AxiosResponse<ProductConfigResponse> = await HttpClient.get(
+            "products/config");
+        console.log(res);
+        categories.value = res.data.categories;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+watch(include_igv,() => {
+    getPriceBaseCF();
+    getPriceBaseCE();
+})
+
+const getPriceBaseCF = () => {
+    return include_igv.value == 1 ? price_general.value : Number((price_general.value/1.18).toFixed(6));
+}
+const getPriceBaseCE  = () => {
+    return include_igv.value == 1 ? price_company.value : Number((price_company.value/1.18).toFixed(6));
+}
+const loadFile = ($event:any) => {
+    if($event.target.files[0].type.indexOf("image") < 0){
+        IMAGEN_PREVIZUALIZA.value = null;
+        FILE_IMAGEN.value = null;
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "SOLAMENTE PUEDEN SER ARCHIVOS DE TIPO IMAGEN",
+            "error",
+        );
+        // "SOLAMENTE PUEDEN SER ARCHIVOS DE TIPO IMAGEN";
+        return;
+    }
+    FILE_IMAGEN.value = $event.target.files[0];
+    let reader = new FileReader();
+    if(FILE_IMAGEN.value){
+        reader.readAsDataURL(FILE_IMAGEN.value);
+        reader.onloadend = () => IMAGEN_PREVIZUALIZA.value = reader.result;
+    }
+}
+
+const store = async () => {
+    if(!title.value){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas digitar el nombre del producto",
+            "error",
+        );
+        return;
+    }
+
+    if(!sku.value){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas digitar el sku del producto",
+            "error",
+        );
+        return;
+    }
+
+    if(!categorie_id.value){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas seleccionar una categoria del producto",
+            "error",
+        );
+        return;
+    }
+
+    if(!unidad_medida.value){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas seleccionar una unidad del producto",
+            "error",
+        );
+        return;
+    }
+
+    if(price_general.value == 0){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas digitar el precio de cliente final del producto",
+            "error",
+        );
+        return;
+    }
+
+    if(price_company.value == 0){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas digitar el precio empresa del producto",
+            "error",
+        );
+        return;
+    }
+
+    if(!description.value){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas digitar la descripción del producto",
+            "error",
+        );
+        return;
+    }
+
+    if(is_discount.value == 2 && max_discount.value == 0){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas digitar un descuento para el producto",
+            "error",
+        );
+        return;
+    }
+    
+    if(is_isc.value == 2 && percentage_isc.value <= 0){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas digitar un porcentaje ISC",
+            "error",
+        );
+        return;
+    }
+
+    if(stock.value == 0){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas digitar el stock para el producto",
+            "error",
+        );
+        return;
+    }
+
+    if(!FILE_IMAGEN.value){
+        (Swal as TVueSwalInstance).fire(
+            "Upps!",
+            "Necesitas poner una imagen producto",
+            "error",
+        );
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("title",title.value);
+    formData.append("sku",sku.value);
+    formData.append("categorie_id",categorie_id.value);
+    // formData.append("state");
+    formData.append("price_general",price_general.value+"");
+    formData.append("price_company",price_company.value+"");
+    formData.append("description",description.value);
+    formData.append("is_discount",is_discount.value+"");
+    formData.append("max_discount",max_discount.value+"");
+    formData.append("disponiblidad",disponiblidad.value+"");
+    formData.append("include_igv",include_igv.value+"");
+    formData.append("is_icbper",is_icbper.value+"");
+    formData.append("is_ivap",is_ivap.value+"");
+    formData.append("unidad_medida",unidad_medida.value);
+    formData.append("stock",stock.value+"");
+    formData.append("percentage_isc",percentage_isc.value+"");
+    formData.append("is_especial_nota",is_especial_nota.value+"");
+    formData.append("image",FILE_IMAGEN.value);
+    try {
+        const resp: AxiosResponse<ProductResponse> = await HttpClient.post(
+                    "products",formData);
+
+        if(resp.data.code == 405){
+            (Swal as TVueSwalInstance).fire(
+                "Upps!",
+                resp.data.message,
+                "error",
+            );    
+        }else{
+            (Swal as TVueSwalInstance).fire(
+                "Genial!",
+                resp.data.message,
+                "success",
+            );    
+            refreshData();
+        }
+    } catch (e:any) {
+        console.log(e);
+        if (e.response?.data?.error) {
+            (Swal as TVueSwalInstance).fire(
+                "Upps!",
+                e.response?.data?.error,
+                "error",
+            );
+        }
+    }
+    
+
+}
+
+const refreshData = () => {
+    categorie_id.value = "";
+    unidad_medida.value = "";
+    title.value = "";
+    sku.value = "";
+    price_general.value = 0;
+    price_company.value = 0;
+    description.value = "";
+    is_discount.value = 1;
+    max_discount.value = 0;
+    // is_gift.value = 1;
+    include_igv.value = 1;
+    is_icbper.value = 1;
+    is_ivap.value = 1;
+    is_isc.value = 1;
+    percentage_isc.value = 0;
+    is_especial_nota.value = 1;
+
+    disponiblidad.value = 1;
+    stock.value = 0;
+    FILE_IMAGEN.value = null;
+    IMAGEN_PREVIZUALIZA.value = null; 
+}
+
+onMounted(() => {
+    config();  
+})
+</script>

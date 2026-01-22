@@ -8,10 +8,10 @@
               <img :src="logoSm" height="50" alt="logo" class="auth-logo" />
             </router-link>
             <h4 class="mt-3 mb-1 fw-semibold text-white fs-18">
-              Let's Get Started FE
+              Let's Get Started Rizz
             </h4>
             <p class="text-muted fw-medium mb-0">
-              Sign in to continue to FE.
+              Sign in to continue to Rizz.
             </p>
           </div>
         </b-card-body>
@@ -61,7 +61,8 @@
                 >
               </b-col>
             </div>
-             <b-alert
+
+            <b-alert
               :model-value="error.length > 0"
               variant="danger"
               class="shadow-sm border-theme-white-2 my-0 mt-2"
@@ -88,7 +89,7 @@
             <p class="text-muted">
               Don't have an account ?
               <router-link to="/auth/register" class="text-primary ms-2">
-                Free Register
+                Free Resister
               </router-link>
             </p>
             <h6 class="px-3 d-inline-block">Or Login With</h6>
@@ -135,7 +136,7 @@ import type { ResponseAuthLogin } from "@/types/auth";
 import router from "@/router";
 
 const credentials = reactive({
-  email: "nolberto.sumaran@gmail.com",
+  email: "laravest@gmail.com",
   password: "12345678",
 });
 
@@ -163,10 +164,13 @@ const handleLogin = async () => {
       console.log(res);
       if (res.data.access_token) {
         useAuth.saveSession({
-          ...res.data.user,
+          ...res.data.user,//res.data.user,
           token: res.data.access_token,
         });
-        redirectUser();
+        // redirectUser();
+        setTimeout(() => {
+          window.location.reload();
+        }, 50);
       }
     } catch (e: any) {
       console.log(e);
