@@ -126,7 +126,7 @@
                         type="text"
                         id="email-client"
                         v-model="email"
-                        placeholder="Example: laravest@gmail.com"
+                        placeholder="Example: nolberto.sumaran@gmail.com"
                     />
                 </b-col>
 
@@ -136,7 +136,7 @@
                         type="number"
                         id="phone-client"
                         v-model="phone"
-                        placeholder="Example: laravest@gmail.com"
+                        placeholder="Example: nolberto.sumaran@gmail.com"
                     />
                 </b-col>
 
@@ -276,7 +276,7 @@
                         type="text"
                         id="email-client"
                         v-model="email"
-                        placeholder="Example: laravest@gmail.com"
+                        placeholder="Example: nolberto.sumaran@gmail.com"
                     />
                 </b-col>
 
@@ -286,7 +286,7 @@
                         type="number"
                         id="phone-client"
                         v-model="phone"
-                        placeholder="Example: laravest@gmail.com"
+                        placeholder="Example: nolberto.sumaran@gmail.com"
                     />
                 </b-col>
 

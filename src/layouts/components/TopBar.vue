@@ -19,8 +19,8 @@
           </li>
           <li class="mx-3 welcome-text">
                 <h3 class="mb-0 fw-bold text-truncate">
-                 Good Morning, {{ user?.full_name || 'Sumaran' }}!
-               </h3>
+                  Good Morning, {{ user?.full_name || 'Sumaran' }}!
+                </h3>
           </li>
         </ul>
         <ul
@@ -373,14 +373,14 @@
               aria-haspopup="false"
               aria-expanded="false"
             >
-              <img :src="avatar1" alt="" class="thumb-lg rounded-circle" />
+              <img :src="userAvatar" alt="" class="thumb-lg rounded-circle" />
             </a>
             <div class="dropdown-menu dropdown-menu-end py-0">
               <div
                 class="d-flex align-items-center dropdown-item py-2 bg-secondary-subtle"
               >
                 <div class="flex-shrink-0">
-                  <img :src="avatar1" alt="" class="thumb-md rounded-circle" />
+                  <img :src="userAvatar" alt="" class="thumb-md rounded-circle" />
                 </div>
                 <div class="flex-grow-1 ms-2 text-truncate align-self-center" v-if="user">
                   <h6 class="my-0 fw-medium text-dark fs-13">{{ user.full_name }}</h6>
@@ -417,7 +417,6 @@
                 Help Center
               </router-link>
               <div class="dropdown-divider mb-0"></div>
-              <!-- to="/auth/login" -->
               <a class="dropdown-item text-danger" @click="removeSession()">
                 <i class="las la-power-off fs-18 me-1 align-text-bottom"></i>
                 Logout
@@ -429,8 +428,10 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+// MODIFICADO: Importamos computed
+import { ref, onMounted, computed } from "vue";
 import simplebar from "simplebar-vue";
 import DropDown from "@/components/DropDown.vue";
 import { useLayoutStore } from "@/stores/layout";
@@ -486,6 +487,14 @@ import spainFlag from "@/assets/images/flags/spain_flag.jpg";
 import germanyFlag from "@/assets/images/flags/germany_flag.jpg";
 import frenchFlag from "@/assets/images/flags/french_flag.jpg";
 import avatar1 from "@/assets/images/users/avatar-1.jpg";
+
+// MODIFICADO: Agregada la lógica limpia para el avatar
+// Si user tiene avatar, lo usa. Si no, usa avatar1.
+const userAvatar = computed(() => {
+  return user.value?.avatar || avatar1;
+});
+
+
 
 const windowScroll = () => {
   const navbar = document.getElementById("topbar-custom");

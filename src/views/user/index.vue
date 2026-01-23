@@ -119,7 +119,7 @@
                         type="text"
                         id="email-user"
                         v-model="email"
-                        placeholder="Example: laravest@gmail.com"
+                        placeholder="Example: nolberto.sumaran@gmail.com"
                     />
                 </b-col>
 
@@ -129,7 +129,7 @@
                         type="number"
                         id="phone-user"
                         v-model="phone"
-                        placeholder="Example: laravest@gmail.com"
+                        placeholder="Example: nolberto.sumaran@gmail.com"
                     />
                 </b-col>
                 <b-col lg="4">

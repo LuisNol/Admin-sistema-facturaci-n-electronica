@@ -38,7 +38,7 @@
                                     type="text"
                                     id="email-client"
                                     v-model="email"
-                                    placeholder="Example: laravest@gmail.com"
+                                    placeholder="Example: nolberto.sumaran@gmail.com"
                                 />
                             </b-col>
 

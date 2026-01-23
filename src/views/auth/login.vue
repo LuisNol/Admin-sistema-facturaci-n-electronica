@@ -136,7 +136,7 @@ import type { ResponseAuthLogin } from "@/types/auth";
 import router from "@/router";
 
 const credentials = reactive({
-  email: "laravest@gmail.com",
+  email: "nolberto.sumaran@gmail.com",
   password: "12345678",
 });
 
