@@ -32,6 +32,35 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.27.1"
 
+"@devcycle/js-client-sdk@1.47.7":
+  version "1.47.7"
+  resolved "https://registry.npmjs.org/@devcycle/js-client-sdk/-/js-client-sdk-1.47.7.tgz"
+  integrity sha512-amlUgO7P8TqnY66+m1EsXAKPq9M3rrjWJL5nv9od4zJ52bhCukXGaQOF+Jv77K/zUT4bzjD2+O7uVNPHhkxrDg==
+  dependencies:
+    "@devcycle/types" "1.32.4"
+    fetch-retry "^5.0.6"
+    lodash "^4.17.21"
+    ua-parser-js "^1.0.40"
+    uuid "^8.3.2"
+
+"@devcycle/openfeature-web-provider@^1.12.7":
+  version "1.12.7"
+  resolved "https://registry.npmjs.org/@devcycle/openfeature-web-provider/-/openfeature-web-provider-1.12.7.tgz"
+  integrity sha512-82qGWMa9VHLEV+0vLfsO+KBYB641kESDTiR8CNJirWyF/NeATqqaMiBg6QwdV4u7Yk64r5emqAblaueJ9yl2Cw==
+  dependencies:
+    "@devcycle/js-client-sdk" "1.47.7"
+
+"@devcycle/types@1.32.4":
+  version "1.32.4"
+  resolved "https://registry.npmjs.org/@devcycle/types/-/types-1.32.4.tgz"
+  integrity sha512-74RlKqXFNeQRKOH+6OTiPaMGnXCns+eB0gSDNiknGOY/NuUjeM2SeD4M/gZV4PzWqJ5K4vFy/hqZv7mvk/Ukag==
+  dependencies:
+    class-transformer "0.5.1"
+    class-validator "0.14.1"
+    iso-639-1 "^2.1.15"
+    lodash "^4.17.21"
+    reflect-metadata "^0.1.14"
+
 "@esbuild/win32-x64@0.25.5":
   version "0.25.5"
   resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.25.5.tgz"
@@ -136,6 +165,16 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@openfeature/core@^1.9.0":
+  version "1.9.1"
+  resolved "https://registry.npmjs.org/@openfeature/core/-/core-1.9.1.tgz"
+  integrity sha512-YySPtH4s/rKKnHRU0xyFGrqMU8XA+OIPNWDrlEFxE6DCVWCIrxE5YpiB94YD2jMFn6SSdA0cwQ8vLkCkl8lm8A==
+
+"@openfeature/web-sdk@^1.5.0", "@openfeature/web-sdk@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/@openfeature/web-sdk/-/web-sdk-1.7.2.tgz"
+  integrity sha512-8QwhoxVNN2bFFkpWjbCyHCdkVjt/UTVn0o+OwcUUQoZnvPn46Oo1BxJQxUTibl/D/dAM/YQhxmg7ep7gYRxX4g==
+
 "@popperjs/core@^2.11.8", "@popperjs/core@^2.9.2":
   version "2.11.8"
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
@@ -154,6 +193,99 @@
   version "4.41.1"
   resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.41.1.tgz"
   integrity sha512-Wq2zpapRYLfi4aKxf2Xff0tN+7slj2d4R87WEzqw7ZLsVvO5zwYCIuEGSZYiK41+GlwUo1HiR+GdkLEJnCKTCw==
+
+"@sentry-internal/browser-utils@10.36.0":
+  version "10.36.0"
+  resolved "https://registry.npmjs.org/@sentry-internal/browser-utils/-/browser-utils-10.36.0.tgz"
+  integrity sha512-WILVR8HQBWOxbqLRuTxjzRCMIACGsDTo6jXvzA8rz6ezElElLmIrn3CFAswrESLqEEUa4CQHl5bLgSVJCRNweA==
+  dependencies:
+    "@sentry/core" "10.36.0"
+
+"@sentry-internal/feedback@10.36.0":
+  version "10.36.0"
+  resolved "https://registry.npmjs.org/@sentry-internal/feedback/-/feedback-10.36.0.tgz"
+  integrity sha512-zPjz7AbcxEyx8AHj8xvp28fYtPTPWU1XcNtymhAHJLS9CXOblqSC7W02Jxz6eo3eR1/pLyOo6kJBUjvLe9EoFA==
+  dependencies:
+    "@sentry/core" "10.36.0"
+
+"@sentry-internal/replay-canvas@10.36.0":
+  version "10.36.0"
+  resolved "https://registry.npmjs.org/@sentry-internal/replay-canvas/-/replay-canvas-10.36.0.tgz"
+  integrity sha512-DLGIwmT2LX+O6TyYPtOQL5GiTm2rN0taJPDJ/Lzg2KEJZrdd5sKkzTckhh2x+vr4JQyeaLmnb8M40Ch1hvG/vQ==
+  dependencies:
+    "@sentry-internal/replay" "10.36.0"
+    "@sentry/core" "10.36.0"
+
+"@sentry-internal/replay@10.36.0":
+  version "10.36.0"
+  resolved "https://registry.npmjs.org/@sentry-internal/replay/-/replay-10.36.0.tgz"
+  integrity sha512-nLMkJgvHq+uCCrQKV2KgSdVHxTsmDk0r2hsAoTcKCbzUpXyW5UhCziMRS6ULjBlzt5sbxoIIplE25ZpmIEeNgg==
+  dependencies:
+    "@sentry-internal/browser-utils" "10.36.0"
+    "@sentry/core" "10.36.0"
+
+"@sentry-internal/tracing@7.116.0":
+  version "7.116.0"
+  resolved "https://registry.npmjs.org/@sentry-internal/tracing/-/tracing-7.116.0.tgz"
+  integrity sha512-y5ppEmoOlfr77c/HqsEXR72092qmGYS4QE5gSz5UZFn9CiinEwGfEorcg2xIrrCuU7Ry/ZU2VLz9q3xd04drRA==
+  dependencies:
+    "@sentry/core" "7.116.0"
+    "@sentry/types" "7.116.0"
+    "@sentry/utils" "7.116.0"
+
+"@sentry/browser@10.36.0":
+  version "10.36.0"
+  resolved "https://registry.npmjs.org/@sentry/browser/-/browser-10.36.0.tgz"
+  integrity sha512-yHhXbgdGY1s+m8CdILC9U/II7gb6+s99S2Eh8VneEn/JG9wHc+UOzrQCeFN0phFP51QbLkjkiQbbanjT1HP8UQ==
+  dependencies:
+    "@sentry-internal/browser-utils" "10.36.0"
+    "@sentry-internal/feedback" "10.36.0"
+    "@sentry-internal/replay" "10.36.0"
+    "@sentry-internal/replay-canvas" "10.36.0"
+    "@sentry/core" "10.36.0"
+
+"@sentry/core@10.36.0":
+  version "10.36.0"
+  resolved "https://registry.npmjs.org/@sentry/core/-/core-10.36.0.tgz"
+  integrity sha512-EYJjZvofI+D93eUsPLDIUV0zQocYqiBRyXS6CCV6dHz64P/Hob5NJQOwPa8/v6nD+UvJXvwsFfvXOHhYZhZJOQ==
+
+"@sentry/core@7.116.0":
+  version "7.116.0"
+  resolved "https://registry.npmjs.org/@sentry/core/-/core-7.116.0.tgz"
+  integrity sha512-J6Wmjjx+o7RwST0weTU1KaKUAlzbc8MGkJV1rcHM9xjNTWTva+nrcCM3vFBagnk2Gm/zhwv3h0PvWEqVyp3U1Q==
+  dependencies:
+    "@sentry/types" "7.116.0"
+    "@sentry/utils" "7.116.0"
+
+"@sentry/replay@^7.116.0":
+  version "7.116.0"
+  resolved "https://registry.npmjs.org/@sentry/replay/-/replay-7.116.0.tgz"
+  integrity sha512-OrpDtV54pmwZuKp3g7PDiJg6ruRMJKOCzK08TF7IPsKrr4x4UQn56rzMOiABVuTjuS8lNfAWDar6c6vxXFz5KA==
+  dependencies:
+    "@sentry-internal/tracing" "7.116.0"
+    "@sentry/core" "7.116.0"
+    "@sentry/types" "7.116.0"
+    "@sentry/utils" "7.116.0"
+
+"@sentry/types@7.116.0":
+  version "7.116.0"
+  resolved "https://registry.npmjs.org/@sentry/types/-/types-7.116.0.tgz"
+  integrity sha512-QCCvG5QuQrwgKzV11lolNQPP2k67Q6HHD9vllZ/C4dkxkjoIym8Gy+1OgAN3wjsR0f/kG9o5iZyglgNpUVRapQ==
+
+"@sentry/utils@7.116.0":
+  version "7.116.0"
+  resolved "https://registry.npmjs.org/@sentry/utils/-/utils-7.116.0.tgz"
+  integrity sha512-Vn9fcvwTq91wJvCd7WTMWozimqMi+dEZ3ie3EICELC2diONcN16ADFdzn65CQQbYwmUzRjN9EjDN2k41pKZWhQ==
+  dependencies:
+    "@sentry/types" "7.116.0"
+
+"@sentry/vue@^10.36.0":
+  version "10.36.0"
+  resolved "https://registry.npmjs.org/@sentry/vue/-/vue-10.36.0.tgz"
+  integrity sha512-pGED21QngK1ulqGsNn1NyBKgay8Cf7qZBnaxQXvnm9RaIlTGYdqg7TeooQru45We/8f0DzM6n59YykAsUu21kw==
+  dependencies:
+    "@sentry/browser" "10.36.0"
+    "@sentry/core" "10.36.0"
 
 "@transloadit/prettier-bytes@^0.3.4":
   version "0.3.5"
@@ -234,6 +366,11 @@
   version "2.3.8"
   resolved "https://registry.npmjs.org/@types/sizzle/-/sizzle-2.3.8.tgz"
   integrity sha512-0vWLNK2D5MT9dg0iOo8GlKguPAU02QjmZitPEsXRuJXU/OGIOt9vT9Fc26wtYuavLxtO45v9PGleoL9Z0k1LHg==
+
+"@types/validator@^13.11.8":
+  version "13.15.10"
+  resolved "https://registry.npmjs.org/@types/validator/-/validator-13.15.10.tgz"
+  integrity sha512-T8L6i7wCuyoK8A/ZeLYt1+q0ty3Zb9+qbSSvrIVitzT3YjZqkTZ40IbRsPanlB4h1QB3JVL1SYCdR6ngtFYcuA==
 
 "@types/web-bluetooth@^0.0.20":
   version "0.0.20"
@@ -950,6 +1087,20 @@ chokidar@^3.6.0, "chokidar@>=3.0.0 <4.0.0":
   optionalDependencies:
     fsevents "~2.3.2"
 
+class-transformer@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.npmjs.org/class-transformer/-/class-transformer-0.5.1.tgz"
+  integrity sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==
+
+class-validator@0.14.1:
+  version "0.14.1"
+  resolved "https://registry.npmjs.org/class-validator/-/class-validator-0.14.1.tgz"
+  integrity sha512-2VEG9JICxIqTpoK1eMzZqaV+u/EiwEJkMGzTrZf6sU/fwsnOITVgYJ8yojSy6CaXtO9V0Cc6ZQZ8h8m4UBuLwQ==
+  dependencies:
+    "@types/validator" "^13.11.8"
+    libphonenumber-js "^1.10.53"
+    validator "^13.9.0"
+
 classnames@^2.2.6:
   version "2.5.1"
   resolved "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz"
@@ -1143,6 +1294,11 @@ fdir@^6.4.4:
   resolved "https://registry.npmjs.org/fdir/-/fdir-6.4.5.tgz"
   integrity sha512-4BG7puHpVsIYxZUbiUE3RqGloLaSSwzYie5jvasC4LWuBWzZawynvYouhjbQKw2JuIGYdm0DzIxl8iVidKlUEw==
 
+fetch-retry@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.npmjs.org/fetch-retry/-/fetch-retry-5.0.6.tgz"
+  integrity sha512-3yurQZ2hD9VISAhJJP9bpYFNQrHHBXE2JxxjY5aLEcDi46RmAzJE2OC9FAde0yis5ElW0jTTzs0zfg/Cca4XqQ==
+
 fill-range@^7.1.1:
   version "7.1.1"
   resolved "https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz"
@@ -1265,6 +1421,11 @@ is-stream@^2.0.0:
   resolved "https://registry.npmjs.org/is-stream/-/is-stream-2.0.1.tgz"
   integrity sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==
 
+iso-639-1@^2.1.15:
+  version "2.1.15"
+  resolved "https://registry.npmjs.org/iso-639-1/-/iso-639-1-2.1.15.tgz"
+  integrity sha512-7c7mBznZu2ktfvyT582E2msM+Udc1EjOyhVRE/0ZsjD9LBtWSm23h3PtiRh2a35XoUsTQQjJXaJzuLjXsOdFDg==
+
 jquery@^3.7.1:
   version "3.7.1"
   resolved "https://registry.npmjs.org/jquery/-/jquery-3.7.1.tgz"
@@ -1296,6 +1457,11 @@ leaflet@^1.9.4:
   version "1.9.4"
   resolved "https://registry.npmjs.org/leaflet/-/leaflet-1.9.4.tgz"
   integrity sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==
+
+libphonenumber-js@^1.10.53:
+  version "1.12.35"
+  resolved "https://registry.npmjs.org/libphonenumber-js/-/libphonenumber-js-1.12.35.tgz"
+  integrity sha512-T/Cz6iLcsZdb5jDncDcUNhSAJ0VlSC9TnsqtBNdpkaAmy24/R1RhErtNWVWBrcUZKs9hSgaVsBkc7HxYnazIfw==
 
 listree@^0.0.6:
   version "0.0.6"
@@ -1538,7 +1704,7 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-4.0.2.tgz"
   integrity sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==
 
-pinia@^2.1.7:
+pinia@^2.1.7, "pinia@2.x || 3.x":
   version "2.1.7"
   resolved "https://registry.npmjs.org/pinia/-/pinia-2.1.7.tgz"
   integrity sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==
@@ -1654,6 +1820,11 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
+
+reflect-metadata@^0.1.14:
+  version "0.1.14"
+  resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.14.tgz"
+  integrity sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==
 
 requires-port@^1.0.0:
   version "1.0.0"
@@ -1908,6 +2079,11 @@ typescript@*, typescript@^5.5.3, typescript@>=4.4.4, typescript@>=5.0.0:
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.5.3.tgz"
   integrity sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==
 
+ua-parser-js@^1.0.40:
+  version "1.0.41"
+  resolved "https://registry.npmjs.org/ua-parser-js/-/ua-parser-js-1.0.41.tgz"
+  integrity sha512-LbBDqdIC5s8iROCUjMbW1f5dJQTEFB1+KO9ogbvlb3nm9n4YHa5p4KTvFPWvh2Hs8gZMBuiB1/8+pdfe/tDPug==
+
 ufo@^1.5.3:
   version "1.5.3"
   resolved "https://registry.npmjs.org/ufo/-/ufo-1.5.3.tgz"
@@ -2003,6 +2179,16 @@ url-parse@^1.5.7:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
 
+uuid@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
+  integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+validator@^13.9.0:
+  version "13.15.26"
+  resolved "https://registry.npmjs.org/validator/-/validator-13.15.26.tgz"
+  integrity sha512-spH26xU080ydGggxRyR1Yhcbgx+j3y5jbNXk/8L+iRvdIEQ4uTRH2Sgf2dokud6Q4oAtsbNvJ1Ft+9xmm6IZcA==
+
 "vite@^5.0.0 || ^6.0.0", vite@^6.3.5:
   version "6.3.5"
   resolved "https://registry.npmjs.org/vite/-/vite-6.3.5.tgz"
@@ -2069,7 +2255,7 @@ vue-tsc@^2.0.26:
     "@volar/typescript" "~2.4.11"
     "@vue/language-core" "2.2.10"
 
-"vue@^2.0.0 || >=3.0.0", "vue@^2.6.14 || ^3.3.0", vue@^3, vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.0.11, vue@^3.2.0, vue@^3.2.2, vue@^3.2.25, vue@^3.2.41, vue@^3.4.27, vue@^3.4.29, "vue@> 3.0.0", vue@>=2.5.17, vue@>=3.0.0, "vue@2 || 3", vue@3.4.31:
+"vue@^2.0.0 || >=3.0.0", "vue@^2.6.14 || ^3.3.0", vue@^3, vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.0.11, vue@^3.2.0, vue@^3.2.2, vue@^3.2.25, vue@^3.2.41, vue@^3.4.27, vue@^3.4.29, "vue@> 3.0.0", vue@>=2.5.17, vue@>=3.0.0, "vue@2 || 3", "vue@2.x || 3.x", vue@3.4.31:
   version "3.4.31"
   resolved "https://registry.npmjs.org/vue/-/vue-3.4.31.tgz"
   integrity sha512-njqRrOy7W3YLAlVqSKpBebtZpDVg21FPoaq1I7f/+qqBThK9ChAIjkRWgeP6Eat+8C+iia4P3OYqpATP21BCoQ==

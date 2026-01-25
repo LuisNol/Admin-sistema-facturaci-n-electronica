@@ -42,6 +42,7 @@ declare module 'vue' {
     ChartJs: typeof import('./src/components/ChartJs.vue')['default']
     DropDown: typeof import('./src/components/DropDown.vue')['default']
     FlatPicker: typeof import('./src/components/FlatPicker.vue')['default']
+    HelloWorldBanner: typeof import('./src/components/HelloWorldBanner.vue')['default']
     InputMask: typeof import('./src/components/InputMask.vue')['default']
     JsVectorMap: typeof import('./src/components/JsVectorMap.vue')['default']
     JustGage: typeof import('./src/components/JustGage.vue')['default']

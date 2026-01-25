@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import * as Sentry from "@sentry/vue";
 
 import App from "./App.vue";
 import router from "./router";
@@ -36,5 +37,13 @@ app.use(createPinia());
 app.use(router);
 app.use(createBootstrap({ components: true, directives: true }));
 app.use(VueApexCharts);
+
+Sentry.init({
+	app,
+	dsn: "https://940abd3fbc6ae5cf348e2f53a97e7e38@o4510768056827904.ingest.us.sentry.io/4510768129638400",
+	integrations: [Sentry.browserTracingIntegration({ router })],
+	tracesSampleRate: 1.0,
+	sendDefaultPii: true,
+});
 
 app.mount("#app");
