@@ -82,7 +82,17 @@ const errorRoutes = [
 ];
 
 const dashboardRoutes = [
-  {
+ // {
+ //   path: "/",
+ //   name: "dashboards.analytics",
+  //  meta: {
+  //    title: setTitle("Analytics"),
+  //    authRequired: true,
+ //     permission: 'all',
+  //  },
+  //  component: () => import("@/views/dashboards/analytics/index.vue"),
+ // },
+    {
     path: "/",
     name: "dashboards.analytics",
     meta: {
@@ -90,7 +100,7 @@ const dashboardRoutes = [
       authRequired: true,
       permission: 'all',
     },
-    component: () => import("@/views/dashboards/analytics/index.vue"),
+    component: () => import("@/views/dashboards/fe/index.vue"),
   },
   {
     path: "/dashboards/ecommerce",
