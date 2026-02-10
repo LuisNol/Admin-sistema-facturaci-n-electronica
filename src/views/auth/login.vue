@@ -5,13 +5,13 @@
         <b-card-body class="p-0 bg-black auth-header-box rounded-top">
           <div class="text-center p-3">
             <router-link to="/" class="logo logo-admin">
-              <img :src="logoSm" height="50" alt="logo" class="auth-logo" />
+              <ProcessingCircleAnimation class="auth-logo" style="height: 70px; width: 70px;" />
             </router-link>
             <h4 class="mt-3 mb-1 fw-semibold text-white fs-18">
-              Let's Get Started Rizz
+              Empecemos NLS FE
             </h4>
             <p class="text-muted fw-medium mb-0">
-              Sign in to continue to Rizz.
+              Inicia sesión para continuar con NLS FE.
             </p>
           </div>
         </b-card-body>
@@ -122,7 +122,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from "vue";
 
-import logoSm from "@/assets/images/logo-sm.png";
+import ProcessingCircleAnimation from "@/components/ProcessingCircleAnimation.vue";
 import { required, email } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 import AuthLayout from "@/layouts/AuthLayout.vue";

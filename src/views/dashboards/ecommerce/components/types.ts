@@ -6,6 +6,7 @@ export type StatType = {
   stat: string;
   change?: number;
   subTitle?: string;
+  isLottie?: boolean;
   buttonVariant?:
     | keyof BaseButtonVariant
     | null

@@ -6,7 +6,11 @@
             <div
               class="d-flex justify-content-center align-items-center thumb-xl border border-secondary rounded-circle"
             >
+              <!-- Ícono animado Lottie para Cotización -->
+              <CotizationIconAnimation v-if="item.isLottie" />
+              <!-- Ícono Font Awesome por defecto -->
               <i
+                v-else
                 class="h1 align-self-center mb-0 text-secondary"
                 :class="item.icon"
               />
@@ -32,6 +36,7 @@
   <script setup lang="ts">
   import type { PropType } from "vue";
   import type { StatType } from "@/views/dashboards/ecommerce/components/types";
+  import CotizationIconAnimation from "@/components/CotizationIconAnimation.vue";
   
   defineProps({
     item: {

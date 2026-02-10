@@ -19,7 +19,7 @@ export default defineConfig({
       resolvers: [BootstrapVueNextResolver()],
     }),
     {
-      name: 'move-index-html',
+      name: 'copy-index-html',
       closeBundle() {
         const sourceIndex = path.resolve(__dirname, 'dist/rizz_v/index.html');
         const targetIndex = path.resolve(__dirname, 'dist/index.html');
@@ -27,8 +27,8 @@ export default defineConfig({
         if (fs.existsSync(sourceIndex)) {
           fs.mkdirSync(path.dirname(targetIndex), { recursive: true });
           fs.copyFileSync(sourceIndex, targetIndex);
-          fs.unlinkSync(sourceIndex);
-          console.log('✓ index.html movido a dist/');
+          // Mantener copia en dist/rizz_v/ para que nginx encuentre index.html en ambas rutas
+          console.log('✓ index.html copiado a dist/');
         }
       }
     }

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="./src/assets/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rizz Vue - Responsive Admin Dashboard Template</title>
     <style>
@@ -23,6 +23,16 @@
       overflow: hidden;
     }
 
+    #splash-screen .splash-logo-anim {
+      height: 8%;
+      width: 8%;
+      min-width: 60px;
+      min-height: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     #splash-screen.remove {
       animation: fadeout 0.7s forwards;
       z-index: 0;
@@ -39,10 +49,32 @@
   <body>
     <div id="app"></div>
     <div id="splash-screen">
-      <img alt="Logo" src="./src/assets/images/logo-sm.png" style="height: 4%" />
+      <div class="splash-logo-anim" aria-hidden="true"></div>
       <img alt="Logo" src="./src/assets/images/logo-dark.png" style="height: 3%;margin-inline-start:6px" />
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      async function loadSplashAnimation() {
+        const container = document.querySelector("#splash-screen .splash-logo-anim");
+        if (container && window.lottie) {
+          try {
+            const response = await fetch("./src/assets/animations/processing-circle.json");
+            const animationData = await response.json();
+            lottie.loadAnimation({
+              container,
+              renderer: "svg",
+              loop: true,
+              autoplay: true,
+              animationData,
+            });
+          } catch (err) {
+            console.error("Error loading animation:", err);
+          }
+        }
+      }
+      loadSplashAnimation();
+    </script>
     <script>
       const rootEl = document.querySelector('#app')
       new MutationObserver(() => {

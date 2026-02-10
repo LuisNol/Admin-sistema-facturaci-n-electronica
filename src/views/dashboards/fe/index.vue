@@ -35,6 +35,7 @@ import CategoriesMostSale from "@/views/dashboards/fe/components/CategoriesMostS
 import AudienceOverview from "@/views/dashboards/fe/components/AudienceOverview.vue";
 import ProductsMostSale from "@/views/dashboards/fe/components/ProductsMostSale.vue";
 import ClientMostSale from "@/views/dashboards/fe/components/ClientMostSale.vue";
+import CotizationIconAnimation from "@/components/CotizationIconAnimation.vue";
 
 import { onMounted, ref, watch } from "vue";
 import HttpClient from "@/helpers/http-client";
@@ -51,7 +52,8 @@ const report_general = async () => {
     console.log(res);
     statData.value.push({
         title: "Total Cotización",
-        icon: "fas fa-file-alt",
+        icon: "lottie-money-report",
+        isLottie: true,
         stat: `S/. ${res.data.total_cotiz_month_current}`,
         change: res.data.variation_percentage_total_cotiz,
         subTitle: "",

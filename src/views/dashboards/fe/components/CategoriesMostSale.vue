@@ -141,7 +141,20 @@ const customersChart = ref<ApexChartType>({
       offsetY: 0,
     },
     labels: [],//["Currenet", "New", "Retargeted"],
-    colors: ["#22c55e", "#08b0e7", "#ffc728"],
+    colors: [
+      "#22c55e", // Verde
+      "#08b0e7", // Azul
+      "#ffc728", // Naranja
+      "#ef4444", // Rojo
+      "#a855f7", // Púrpura
+      "#ec4899", // Rosa
+      "#06b6d4", // Cian
+      "#6366f1", // Índigo
+      "#84cc16", // Limón
+      "#8b5cf6", // Violeta
+      "#14b8a6", // Turquesa
+      "#f59e0b"  // Ámbar
+    ],
 
     responsive: [
       {

@@ -5,7 +5,7 @@
         <b-card-body class="p-0 bg-black auth-header-box rounded-top">
           <div class="text-center p-3">
             <router-link to="/" class="logo logo-admin">
-              <img :src="logoSm" height="50" alt="logo" class="auth-logo" />
+              <ProcessingCircleAnimation class="auth-logo" style="height: 70px; width: 70px;" />
             </router-link>
             <h4 class="mt-3 mb-1 fw-semibold text-white fs-18">
               Enter Password
@@ -54,6 +54,6 @@
   </AuthLayout>
 </template>
 <script setup lang="ts">
-import logoSm from "@/assets/images/logo-sm.png";
+import ProcessingCircleAnimation from "@/components/ProcessingCircleAnimation.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
 </script>

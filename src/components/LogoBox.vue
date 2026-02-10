@@ -1,7 +1,7 @@
 <template>
   <router-link to="/" class="logo">
     <span>
-      <img :src="logoSm" alt="logo-small" class="logo-sm" />{{ " " }}
+      <ProcessingCircleAnimation class="logo-sm logo-sm-animated" />{{ " " }}
     </span>
     <span class="">
       <img :src="logoLight" alt="logo-large" class="logo-lg logo-light" />
@@ -10,7 +10,14 @@
   </router-link>
 </template>
 <script setup lang="ts">
-import logoSm from "@/assets/images/logo-sm.png";
+import ProcessingCircleAnimation from "./ProcessingCircleAnimation.vue";
 import logoLight from "@/assets/images/logo-light.png";
 import logoDark from "@/assets/images/logo-dark.png";
 </script>
+
+<style scoped>
+.logo-sm {
+  width: 60px;
+  height: 60px;
+}
+</style>
