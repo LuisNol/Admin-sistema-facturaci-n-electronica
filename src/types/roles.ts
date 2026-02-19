@@ -177,4 +177,77 @@ export const PERMISOS = [
             },
         ]
     },
+    {
+        'name': 'Compras',
+        'permisos': [
+            {
+                name: 'Registrar',
+                permiso: 'register_purchase',
+            },
+            {
+                name: 'Listado',
+                permiso: 'list_purchase',
+            },
+            {
+                name: 'Editar',
+                permiso: 'edit_purchase',
+            },
+            {
+                name: 'Eliminar',
+                permiso: 'delete_purchase',
+            },
+        ]
+    },
+    {
+        'name': 'Transporte',
+        'permisos': [
+            {
+                name: 'Registrar',
+                permiso: 'register_transport',
+            },
+            {
+                name: 'Listado',
+                permiso: 'list_transport',
+            },
+            {
+                name: 'Editar',
+                permiso: 'edit_transport',
+            },
+            {
+                name: 'Eliminar',
+                permiso: 'delete_transport',
+            },
+        ]
+    },
+    {
+        'name': 'Conversión',
+        'permisos': [
+            {
+                name: 'Registrar',
+                permiso: 'register_conversion',
+            },
+            {
+                name: 'Listado',
+                permiso: 'list_conversion',
+            },
+            {
+                name: 'Editar',
+                permiso: 'edit_conversion',
+            },
+            {
+                name: 'Eliminar',
+                permiso: 'delete_conversion',
+            },
+        ]
+    },
+    {
+        'name': 'Kardex',
+        'permisos': [
+            {
+                name: 'Listado',
+                permiso: 'list_kardex',
+            },
+        ]
+    },
+    // Agrega más módulos y permisos según sea necesario 
 ];

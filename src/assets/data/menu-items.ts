@@ -133,4 +133,76 @@ export const MENU_ITEMS: MenuItemType[] = [
     route: { name: "configuration.index" },
     parentKey: "configurat",
   },
+     
+   {
+    key: "warehouse",
+    label: "ALMACEN",
+    isTitle: true,
+    permissions: ['list_purchase','register_purchase','register_transport',
+      'list_transport','list_conversion','list_kardex']
+  },
+  {
+    key: "purchases",
+    icon: "fas fa-shopping-bag",
+    label: "Compras",
+    isTitle: false,
+    children: [
+      {
+        key: "register_purchase",
+        label: "Registrar",
+        route: { name: "purchases.register" },
+        parentKey: "purchases",
+        permission: 'register_purchase',
+      },
+      {
+        key: "list_purchases",
+        label: "Listado",
+        route: { name: "purchases.index" },
+        parentKey: "purchases",
+        permission: 'list_purchase',
+      },
+    ],
+  },
+  {
+    key: "transport",
+    icon: "fas fa-route",
+    label: "Transporte",
+    isTitle: false,
+    children: [
+      {
+        key: "register_transport",
+        label: "Registrar",
+        route: { name: "transport.register" },
+        parentKey: "transport",
+        permission: 'register_transport',
+      },
+      {
+        key: "list_transport",
+        label: "Listado",
+        route: { name: "transport.index" },
+        parentKey: "transport",
+        permission: 'list_transport',
+      },
+    ],
+  },
+  {
+    key: "conversion",
+    icon: "fas fa-exchange-alt",
+    label: "Conversión",
+    route: { name: "conversion" },
+    parentKey: "warehouse",
+    permission: 'list_conversion',
+  },
+  {
+    key: "kardex",
+    icon: "fas fa-clipboard-list",
+    label: "Kardex",
+    route: { name: "kardex" },
+    parentKey: "warehouse",
+    permission: 'list_kardex',
+  },
+  
+
+
+
 ]

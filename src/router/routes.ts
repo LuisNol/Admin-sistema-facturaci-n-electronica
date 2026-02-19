@@ -260,11 +260,75 @@ const comercialRoutes = [
   },
 ];
 
+const warehouseRoutes = [
+  {
+    path: "/purchases/register",
+    name: "purchases.register",
+    meta: {
+      title: setTitle("Registrar Compras"),
+      authRequired: true,
+      permission: 'register_purchase',
+    },
+    component: () => import("@/views/warehouse/compras/register.vue"),
+  },
+  {
+    path: "/purchases/list",
+    name: "purchases.index",
+    meta: {
+      title: setTitle("Listado Compras"),
+      authRequired: true,
+      permission: 'list_purchase',
+    },
+    component: () => import("@/views/warehouse/compras/index.vue"),
+  },
+  {
+    path: "/transport/register",
+    name: "transport.register",
+    meta: {
+      title: setTitle("Registrar Transporte"),
+      authRequired: true,
+      permission: 'register_transport',
+    },
+    component: () => import("@/views/warehouse/transporte/register.vue"),
+  },
+  {
+    path: "/transport/list",
+    name: "transport.index",
+    meta: {
+      title: setTitle("Listado Transporte"),
+      authRequired: true,
+      permission: 'list_transport',
+    },
+    component: () => import("@/views/warehouse/transporte/index.vue"),
+  },
+  {
+    path: "/conversion",
+    name: "conversion",
+    meta: {
+      title: setTitle("Conversión"),
+      authRequired: true,
+      permission: 'list_conversion',
+    },
+    component: () => import("@/views/warehouse/conversion/index.vue"),
+  },
+  {
+    path: "/kardex",
+    name: "kardex",
+    meta: {
+      title: setTitle("Kardex"),
+      authRequired: true,
+      permission: 'list_kardex',
+    },
+    component: () => import("@/views/warehouse/kardex/index.vue"),
+  },
+];
+
 
 export const allRoute = [
   ...authRoutes,
   ...errorRoutes,
   ...dashboardRoutes,
   ...accessRoutes,
-  ...comercialRoutes
+  ...comercialRoutes,
+  ...warehouseRoutes
 ];
