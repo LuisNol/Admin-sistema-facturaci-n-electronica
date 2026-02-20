@@ -139,25 +139,68 @@ const accessRoutes = [
     path: "/configuration",
     name: "configuration.index",
     meta: {
-      title: setTitle("Configuracion"),
+      title: setTitle("Sucursales"),
       authRequired: true,
-      permission: 'all',
+      permission: 'list_branch_office',
     },
-    component: () => import("@/views/configuration/index.vue"),
+    component: () => import("@/views/configuration/sucursales/index.vue"),
   },
 ];
 
-const comercialRoutes = [
+const configurationRoutes = [
   {
-    path: "/categories",
-    name: "categories.index",
+    path: "/configuration/sucursales",
+    name: "configuration.sucursales.index",
+    meta: {
+      title: setTitle("Sucursales"),
+      authRequired: true,
+      permission: 'list_branch_office',
+    },
+    component: () => import("@/views/configuration/sucursales/index.vue"),
+  },
+  {
+    path: "/configuration/almacenes",
+    name: "configuration.warehouses.index",
+    meta: {
+      title: setTitle("Almacenes"),
+      authRequired: true,
+      permission: 'list_warehouse',
+    },
+    component: () => import("@/views/configuration/warehouses/index.vue"),
+  },
+  {
+    path: "/configuration/categorias",
+    name: "configuration.categories.index",
     meta: {
       title: setTitle("Categorias"),
       authRequired: true,
       permission: 'list_categorie',
     },
-    component: () => import("@/views/categorie/index.vue"),
+    component: () => import("@/views/configuration/categories/index.vue"),
   },
+  {
+    path: "/configuration/proveedores",
+    name: "configuration.providers.index",
+    meta: {
+      title: setTitle("Proveedores"),
+      authRequired: true,
+      permission: 'list_supplier',
+    },
+    component: () => import("@/views/configuration/providers/index.vue"),
+  },
+  {
+    path: "/configuration/unidades",
+    name: "configuration.units.index",
+    meta: {
+      title: setTitle("Unidades"),
+      authRequired: true,
+      permission: 'list_unit',
+    },
+    component: () => import("@/views/configuration/units/index.vue"),
+  },
+];
+
+const comercialRoutes = [
   {
     path: "/product/register",
     name: "products.store",
@@ -329,6 +372,7 @@ export const allRoute = [
   ...errorRoutes,
   ...dashboardRoutes,
   ...accessRoutes,
+  ...configurationRoutes,
   ...comercialRoutes,
   ...warehouseRoutes
 ];

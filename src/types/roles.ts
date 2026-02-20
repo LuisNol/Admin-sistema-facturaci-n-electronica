@@ -68,6 +68,90 @@ export const PERMISOS = [
         ]
     },
     {
+        'name': 'Sucursales',
+        'permisos': [
+            {
+                name: 'Registrar',
+                permiso: 'register_branch_office',
+            },
+            {
+                name: 'Listado',
+                permiso: 'list_branch_office',
+            },
+            {
+                name: 'Editar',
+                permiso: 'edit_branch_office',
+            },
+            {
+                name: 'Eliminar',
+                permiso: 'delete_branch_office',
+            },
+        ]
+    },
+    {
+        'name': 'Almacenes',
+        'permisos': [
+            {
+                name: 'Registrar',
+                permiso: 'register_warehouse',
+            },
+            {
+                name: 'Listado',
+                permiso: 'list_warehouse',
+            },
+            {
+                name: 'Editar',
+                permiso: 'edit_warehouse',
+            },
+            {
+                name: 'Eliminar',
+                permiso: 'delete_warehouse',
+            },
+        ]
+    },
+    {
+        'name': 'Proveedores',
+        'permisos': [
+            {
+                name: 'Registrar',
+                permiso: 'register_supplier',
+            },
+            {
+                name: 'Listado',
+                permiso: 'list_supplier',
+            },
+            {
+                name: 'Editar',
+                permiso: 'edit_supplier',
+            },
+            {
+                name: 'Eliminar',
+                permiso: 'delete_supplier',
+            },
+        ]
+    },
+    {
+        'name': 'Unidades',
+        'permisos': [
+            {
+                name: 'Registrar',
+                permiso: 'register_unit',
+            },
+            {
+                name: 'Listado',
+                permiso: 'list_unit',
+            },
+            {
+                name: 'Editar',
+                permiso: 'edit_unit',
+            },
+            {
+                name: 'Eliminar',
+                permiso: 'delete_unit',
+            },
+        ]
+    },
+    {
         'name': 'Categorias',
         'permisos': [
             {

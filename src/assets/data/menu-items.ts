@@ -18,7 +18,7 @@ export const MENU_ITEMS: MenuItemType[] = [
     key: "Accesos",
     label: "ACCESS",
     isTitle: true,
-    permissions: ['list_role','list_user']
+    permissions: ['list_role','list_user','list_branch_office','list_warehouse','list_categorie','list_supplier','list_unit']
   },
   {
     key: "roles",
@@ -37,21 +37,58 @@ export const MENU_ITEMS: MenuItemType[] = [
     permission: 'list_user',
   },
   {
+    key: "configurat",
+    label: "Configuraciones",
+    isTitle: false,
+    icon: "fas fa-wrench",
+    children: [
+      {
+        key: "configuration_info",
+        label: "Sucursales",
+        route: { name: "configuration.sucursales.index" },
+        parentKey: "configurat",
+        permission: 'list_branch_office',
+      },
+      {
+        key: "warehouses",
+        label: "Almacenes",
+        route: { name: "configuration.warehouses.index" },
+        parentKey: "configurat",
+        permission: 'list_warehouse',
+      },
+      {
+        key: "categories",
+        label: "Categorias",
+        route: { name: "configuration.categories.index" },
+        parentKey: "configurat",
+        permission: 'list_categorie',
+      },
+      {
+        key: "suppliers",
+        label: "Proveedores",
+        route: { name: "configuration.providers.index" },
+        parentKey: "configurat",
+        permission: 'list_supplier',
+      },
+      {
+        key: "units",
+        label: "Unidades",
+        route: { name: "configuration.units.index" },
+        parentKey: "configurat",
+        permission: 'list_unit',
+      },
+    ],
+  },
+
+  {
     key: "Comercial",
     label: "COMERCIAL",
     isTitle: true,
-    permissions: ['list_categorie','list_product','register_product','list_client','register_sale','list_sale',
+    permissions: ['list_product','register_product','list_client','register_sale','list_sale',
       'register_guia_remision','list_guia_remision'
     ]
   },
-  {
-    key: "categories",
-    icon: "fas fa-life-ring",
-    label: "Categorias",
-    route: { name: "categories.index" },
-    parentKey: "categories",
-    permission: 'list_categorie',
-  },
+
   {
     key: "products",
     label: "Productos",
@@ -126,13 +163,7 @@ export const MENU_ITEMS: MenuItemType[] = [
       },
     ],
   },
-  {
-    key: "configurat",
-    icon: "fas fa-wrench",
-    label: "Configuraciones",
-    route: { name: "configuration.index" },
-    parentKey: "configurat",
-  },
+ 
      
    {
     key: "warehouse",
