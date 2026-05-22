@@ -320,7 +320,7 @@
                         />
                         <b-button 
                             variant="info" 
-                            v-if="type_document === 'RUC' && n_document && String(n_document).length === 11"
+                            v-if="['RUC', 'RUC20'].includes(type_document) && n_document && String(n_document).length === 11"
                             @click="consultarRucCliente"
                             :disabled="loadingConsultaRuc"
                         >
@@ -485,6 +485,7 @@ const reset = () => {
 }
 const store = async () => {
     try {
+        // Validaciones para Cliente Final
         if(type_client.value == "1"){
             if(!name.value){
                 (Swal as TVueSwalInstance).fire(
@@ -502,95 +503,65 @@ const store = async () => {
                 );
                 return;
             }
-        }else{
+            if(!type_document.value){
+                (Swal as TVueSwalInstance).fire(
+                    "Upps!",
+                    "El tipo de documento es obligatorio",
+                    "error",
+                );
+                return;
+            }
+            if(!n_document.value){
+                (Swal as TVueSwalInstance).fire(
+                    "Upps!",
+                    "El número de documento es obligatorio",
+                    "error",
+                );
+                return;
+            }
+        } 
+        // Validaciones para Cliente Empresa
+        else {
             if(!full_name.value){
                 (Swal as TVueSwalInstance).fire(
                     "Upps!",
-                    "La razon social es obligatorio",
+                    "La razón social es obligatoria",
+                    "error",
+                );
+                return;
+            }
+            if(!type_document.value){
+                (Swal as TVueSwalInstance).fire(
+                    "Upps!",
+                    "El tipo de documento es obligatorio",
+                    "error",
+                );
+                return;
+            }
+            if(!n_document.value){
+                (Swal as TVueSwalInstance).fire(
+                    "Upps!",
+                    "El número de documento es obligatorio",
                     "error",
                 );
                 return;
             }
         }
-        if(!email.value){
-            (Swal as TVueSwalInstance).fire(
-                "Upps!",
-                "El campo email es obligatorio",
-                "error",
-            );
-            return;
-        }
-        if(!phone.value){
-            (Swal as TVueSwalInstance).fire(
-                "Upps!",
-                "El campo telefono es obligatorio",
-                "error",
-            );
-            return;
-        }
-        if(!n_document.value){
-            (Swal as TVueSwalInstance).fire(
-                "Upps!",
-                "El campo numero de documento es obligatorio",
-                "error",
-            );
-            return;
-        }
 
-        if(!birth_date.value){
-            (Swal as TVueSwalInstance).fire(
-                "Upps!",
-                "Necesitas seleccionar una fecha para el cliente",
-                "error",
-            );
-            return;
-        }
-
-        if(!address.value){
-            (Swal as TVueSwalInstance).fire(
-                "Upps!",
-                "Necesitas una dirección para el cliente",
-                "error",
-            );
-            return;
-        }
-
-        if(!ubigeo_region.value){
-            (Swal as TVueSwalInstance).fire(
-                "Upps!",
-                "Necesitas una región para el cliente",
-                "error",
-            );
-            return;
-        }
-        if(!ubigeo_provincia.value){
-            (Swal as TVueSwalInstance).fire(
-                "Upps!",
-                "Necesitas una provincia para el cliente",
-                "error",
-            );
-            return;
-        }
-        if(!ubigeo_distrito.value){
-            (Swal as TVueSwalInstance).fire(
-                "Upps!",
-                "Necesitas un distrito para el cliente",
-                "error",
-            );
-            return;
-        }
-
-        let REGION_SELECTED = REGIONES_L.value.find((rg) => rg.id == ubigeo_region.value);
-        if(REGION_SELECTED){
-            region.value = REGION_SELECTED.name;
-        }
-        let PROVINCIA_SELECTED = PROVINCIA_L.value.find((prov) => prov.id == ubigeo_provincia.value);
-        if(PROVINCIA_SELECTED){
-            provincia.value = PROVINCIA_SELECTED.name;
-        }
-        let DISTRITO_SELECTED = DISTRITO_L.value.find((DST) => DST.id == ubigeo_distrito.value);
-        if(DISTRITO_SELECTED){
-            distrito.value = DISTRITO_SELECTED.name;
+        // Procesar UBIGEO solo si está completo
+        if(ubigeo_region.value && ubigeo_provincia.value && ubigeo_distrito.value){
+            let REGION_SELECTED = REGIONES_L.value.find((rg) => rg.id == ubigeo_region.value);
+            if(REGION_SELECTED){
+                region.value = REGION_SELECTED.name;
+            }
+            let PROVINCIA_SELECTED = PROVINCIA_L.value.find((prov) => prov.id == ubigeo_provincia.value);
+            if(PROVINCIA_SELECTED){
+                provincia.value = PROVINCIA_SELECTED.name;
+            }
+            let DISTRITO_SELECTED = DISTRITO_L.value.find((DST) => DST.id == ubigeo_distrito.value);
+            if(DISTRITO_SELECTED){
+                distrito.value = DISTRITO_SELECTED.name;
+            }
         }
 
         let data = {
@@ -810,6 +781,34 @@ const consultarRucCliente = async () => {
             // Llenar razón social desde la API
             const razonSocial = dataRuc.razon_social || dataRuc.razonSocial || '';
             full_name.value = razonSocial;
+            
+            // Llenar dirección
+            if (dataRuc.direccion) {
+                address.value = dataRuc.direccion;
+            }
+            
+            // Procesar UBIGEO si existe
+            if (dataRuc.ubigeo) {
+                const ubigeoStr = String(dataRuc.ubigeo).padStart(6, '0');
+                
+                // Extraer los componentes: DDPPDD (Departamento, Provincia, Distrito)
+                const regionId = ubigeoStr.substring(0, 2);
+                const provinciaId = ubigeoStr.substring(0, 4);
+                const distritoId = ubigeoStr;
+                
+                // Asignar región
+                ubigeo_region.value = regionId;
+                
+                // Usar setTimeout para permitir que el watch actualice PROVINCIA_SELECTS
+                setTimeout(() => {
+                    ubigeo_provincia.value = provinciaId;
+                    
+                    // Usar otro setTimeout para permitir que el watch actualice DISTRITO_SELECTS
+                    setTimeout(() => {
+                        ubigeo_distrito.value = distritoId;
+                    }, 50);
+                }, 50);
+            }
 
             (Swal as TVueSwalInstance).fire(
                 "Éxito!",
