@@ -188,6 +188,9 @@
                                     <a href="#" onclick="return false;" @click="showPdf(sale)">
                                         <i class="fas fa-file-pdf text-secondary fs-22"></i>
                                     </a>{{ " " }}
+                                    <a href="#" onclick="return false;" @click="printSale(sale)">
+                                        <i class="fas fa-print text-secondary fs-22"></i>
+                                    </a>{{ " " }}
                                     <a href="#" onclick="return false;" @click="editSale(sale)">
                                         <i class="las la-pen text-secondary fs-22"></i>
                                     </a>{{ " " }}
@@ -304,6 +307,9 @@ const reset = () => {
 
 const showPdf = async(sale:Sale) => {
     window.open(import.meta.env.VITE_API_BASE_URL+"sales-pdf/"+sale.id,'_blank');
+}
+const printSale = async(sale:Sale) => {
+    window.open(import.meta.env.VITE_API_BASE_URL+"sales-print/"+sale.id,'_blank');
 }
 const editSale = async(sale:Sale) => {
     router.push({
