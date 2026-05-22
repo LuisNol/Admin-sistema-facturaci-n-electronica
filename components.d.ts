@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     ApexChart: typeof import('./src/components/ApexChart.vue')['default']
     AppMenu: typeof import('./src/components/AppMenu/index.vue')['default']
-    BAlert: typeof import('bootstrap-vue-next')['BAlert']
     BBadge: typeof import('bootstrap-vue-next')['BBadge']
     BButton: typeof import('bootstrap-vue-next')['BButton']
     BCard: typeof import('bootstrap-vue-next')['BCard']
@@ -18,18 +17,9 @@ declare module 'vue' {
     BCardTitle: typeof import('bootstrap-vue-next')['BCardTitle']
     BCol: typeof import('bootstrap-vue-next')['BCol']
     BCollapse: typeof import('bootstrap-vue-next')['BCollapse']
-    BDropdown: typeof import('bootstrap-vue-next')['BDropdown']
-    BDropdownItem: typeof import('bootstrap-vue-next')['BDropdownItem']
-    BForm: typeof import('bootstrap-vue-next')['BForm']
-    BFormCheckbox: typeof import('bootstrap-vue-next')['BFormCheckbox']
-    BFormFile: typeof import('bootstrap-vue-next')['BFormFile']
-    BFormGroup: typeof import('bootstrap-vue-next')['BFormGroup']
     BFormInput: typeof import('bootstrap-vue-next')['BFormInput']
     BFormRadio: typeof import('bootstrap-vue-next')['BFormRadio']
     BFormSelect: typeof import('bootstrap-vue-next')['BFormSelect']
-    BFormTextarea: typeof import('bootstrap-vue-next')['BFormTextarea']
-    BInputGroup: typeof import('bootstrap-vue-next')['BInputGroup']
-    BInputGroupText: typeof import('bootstrap-vue-next')['BInputGroupText']
     BModal: typeof import('bootstrap-vue-next')['BModal']
     BPagination: typeof import('bootstrap-vue-next')['BPagination']
     BRow: typeof import('bootstrap-vue-next')['BRow']
@@ -56,8 +46,5 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UIComponentCard: typeof import('./src/components/UIComponentCard.vue')['default']
-  }
-  export interface ComponentCustomProperties {
-    vBTooltip: typeof import('bootstrap-vue-next')['vBTooltip']
   }
 }

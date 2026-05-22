@@ -152,12 +152,23 @@
 
                 <b-col lg="4">
                     <label for="n_document-client" class="col-form-label text-lg-end">N° de Documento: </label>
-                    <b-form-input
-                        type="number"
-                        id="n_document-client"
-                        v-model="n_document"
-                        placeholder="Example: ######"
-                    />
+                    <div class="input-group">
+                        <b-form-input
+                            type="number"
+                            id="n_document-client"
+                            v-model="n_document"
+                            placeholder="Example: ######"
+                        />
+                        <b-button 
+                            variant="info" 
+                            v-if="type_document === 'DNI' && n_document && String(n_document).length === 8"
+                            @click="consultarDniCliente"
+                            :disabled="loadingConsultaDni"
+                        >
+                            <i :class="loadingConsultaDni ? 'fas fa-spinner fa-spin' : 'fas fa-search'"></i>
+                            {{ loadingConsultaDni ? 'Consultando...' : 'Consultar' }}
+                        </b-button>
+                    </div>
                 </b-col>
 
                 <b-col lg="4">
@@ -300,12 +311,23 @@
 
                 <b-col lg="4">
                     <label for="n_document-client" class="col-form-label text-lg-end">N° de Documento: </label>
-                    <b-form-input
-                        type="number"
-                        id="n_document-client"
-                        v-model="n_document"
-                        placeholder="Example: ######"
-                    />
+                    <div class="input-group">
+                        <b-form-input
+                            type="number"
+                            id="n_document-client"
+                            v-model="n_document"
+                            placeholder="Example: ######"
+                        />
+                        <b-button 
+                            variant="info" 
+                            v-if="type_document === 'RUC' && n_document && String(n_document).length === 11"
+                            @click="consultarRucCliente"
+                            :disabled="loadingConsultaRuc"
+                        >
+                            <i :class="loadingConsultaRuc ? 'fas fa-spinner fa-spin' : 'fas fa-search'"></i>
+                            {{ loadingConsultaRuc ? 'Consultando...' : 'Consultar' }}
+                        </b-button>
+                    </div>
                 </b-col>
 
                 <b-col lg="4">
@@ -422,6 +444,9 @@ const distrito = ref<string>("");
 const type_client = ref<string>("1");
 
 const full_name = ref<string>("");
+
+const loadingConsultaDni = ref<boolean>(false);
+const loadingConsultaRuc = ref<boolean>(false);
 
 const openModalClientFinal = ref(false);
 const openModalClientEmpresa = ref(false);
@@ -726,6 +751,90 @@ const clearField = () => {
     state.value = 1;
 }
 
+const consultarDniCliente = async () => {
+    try {
+        loadingConsultaDni.value = true;
+        const dniNumber = String(n_document.value).padStart(8, '0');
+        
+        const res: AxiosResponse<any> = await HttpClient.post("clients/consultar-dni", {
+            dni: dniNumber
+        });
+
+        if (res.data.success && res.data.data) {
+            const dataDni = res.data.data;
+            
+            // Llenar nombre y apellido
+            name.value = dataDni.nombre || '';
+            
+            // Construir apellido combinado
+            const apellidoPaterno = dataDni.apellido_paterno || '';
+            const apellidoMaterno = dataDni.apellido_materno || '';
+            surname.value = (apellidoPaterno + ' ' + apellidoMaterno).trim();
+
+            (Swal as TVueSwalInstance).fire(
+                "Éxito!",
+                "Datos cargados correctamente",
+                "success",
+            );
+        } else {
+            (Swal as TVueSwalInstance).fire(
+                "Error!",
+                res.data.message || "No se encontraron datos para este DNI",
+                "error",
+            );
+        }
+    } catch (error: any) {
+        const errorMessage = error.response?.data?.message || error.message || "Error al consultar el DNI";
+        (Swal as TVueSwalInstance).fire(
+            "Error!",
+            errorMessage,
+            "error",
+        );
+    } finally {
+        loadingConsultaDni.value = false;
+    }
+}
+
+const consultarRucCliente = async () => {
+    try {
+        loadingConsultaRuc.value = true;
+        const rucNumber = String(n_document.value).padStart(11, '0');
+        
+        const res: AxiosResponse<any> = await HttpClient.post("clients/consultar-ruc", {
+            ruc: rucNumber
+        });
+
+        if (res.data.success && res.data.data) {
+            const dataRuc = res.data.data;
+            
+            // Llenar razón social desde la API
+            const razonSocial = dataRuc.razon_social || dataRuc.razonSocial || '';
+            full_name.value = razonSocial;
+
+            (Swal as TVueSwalInstance).fire(
+                "Éxito!",
+                "Datos cargados correctamente",
+                "success",
+            );
+        } else {
+            (Swal as TVueSwalInstance).fire(
+                "Error!",
+                res.data.message || "No se encontraron datos para este RUC",
+                "error",
+            );
+        }
+    } catch (error: any) {
+        const errorMessage = error.response?.data?.message || error.message || "Error al consultar el RUC";
+        (Swal as TVueSwalInstance).fire(
+            "Error!",
+            errorMessage,
+            "error",
+        );
+    } finally {
+        loadingConsultaRuc.value = false;
+    }
+}
+
 watch(ubigeo_region,(value) => {
     if(value){
         PROVINCIA_SELECTS.value = PROVINCIA_L.value.filter((prov) => prov.department_id == value);
@@ -764,3 +873,21 @@ onMounted(() => {
     list();
 })
 </script>
+
+<style scoped>
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.input-group input {
+    flex: 1;
+}
+
+.input-group button {
+    white-space: nowrap;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
+</style>
