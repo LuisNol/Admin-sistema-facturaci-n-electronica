@@ -849,6 +849,12 @@ watch(ubigeo_provincia,(value) => {
     }
 })
 
+watch(currentPage, (value) => {
+    if(value) {
+        list();
+    }
+})
+
 watch(openModalClientFinal,(value) => {
     if(value == false){
         client_selected.value = undefined;

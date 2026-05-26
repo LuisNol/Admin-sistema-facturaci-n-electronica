@@ -191,10 +191,10 @@
                                     <a href="#" onclick="return false;" @click="printSale(sale)">
                                         <i class="fas fa-print text-secondary fs-22"></i>
                                     </a>{{ " " }}
-                                    <a href="#" onclick="return false;" @click="editSale(sale)">
+                                    <a href="#" onclick="return false;" @click="editSale(sale)" v-if="authStore.isPermitedRoute('edit_sale')">
                                         <i class="las la-pen text-secondary fs-22"></i>
                                     </a>{{ " " }}
-                                    <a href="#" onclick="return false;" @click="deleteSale(sale)">
+                                    <a href="#" onclick="return false;" @click="deleteSale(sale)" v-if="authStore.isPermitedRoute('delete_sale')">
                                         <i class="las la-trash-alt text-secondary fs-22"></i>
                                     </a>
                                 </div>
@@ -230,7 +230,10 @@ import notaCLg from "@/assets/images/nota-c.png";
 import router from "@/router";
 
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import { useAuthStore } from "@/stores/auth";
 type TVueSwalInstance = typeof Swal & typeof Swal.fire;
+
+const authStore = useAuthStore();
 
 const search_product = ref<string>("");
 const categorie_id = ref<string>("");
@@ -320,6 +323,16 @@ const editSale = async(sale:Sale) => {
     })
 }
 const deleteSale = async(sale:Sale) => {
+    // Validación de permisos
+    if(!authStore.isPermitedRoute('delete_sale')){
+        (Swal as TVueSwalInstance).fire(
+            "Acceso Denegado",
+            "⚠️ Esta aplicación está mal programada. No tiene permisos para eliminar ventas. Solo puede listar.",
+            "error",
+        );
+        return;
+    }
+    
     (Swal as TVueSwalInstance)
         .fire({
             title: "Confirmar la eliminación",
